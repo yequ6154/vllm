@@ -1,0 +1,9 @@
+FROM m.daocloud.io/quay.io/ascend/vllm-ascend:v0.11.0rc2
+
+COPY ./vllm/model_executor/models/qwen3_moe.py /vllm-workspace/vllm/vllm/model_executor/models/qwen3_moe.py
+COPY ./triton_ascend-3.2.0.dev20250914-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl /workspace
+
+RUN pip install /workspace/triton_ascend-3.2.0.dev20250914-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl && \
+    rm -f /workspace/triton_ascend-3.2.0.dev20250914-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl
+
+
